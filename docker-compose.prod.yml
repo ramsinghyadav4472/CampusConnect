@@ -1,7 +1,7 @@
 services:
   frontend:
     # Pulls the pre-built React image directly from Docker Hub
-    image: ramsinghyadav4472/campusconnect-frontend:latest
+    image: aarnav2/campusconnect-frontend:latest
     container_name: campusconnect_frontend_prod
     ports:
       - "80:80"  # Exposes the frontend directly to the public internet on port 80
@@ -13,7 +13,7 @@ services:
 
   backend:
     # Pulls the pre-built Node API image directly from Docker Hub
-    image: ramsinghyadav4472/campusconnect-backend:latest
+    image: aarnav2/campusconnect-backend:latest
     container_name: campusconnect_backend_prod
     ports:
       - "5000:5000" # Exposes the backend API
