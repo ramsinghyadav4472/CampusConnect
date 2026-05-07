@@ -30,7 +30,31 @@ const SellBook = () => {
     const valid = Array.from(files).filter(f => f.type.startsWith('image/'));
     valid.forEach(f => {
       const reader = new FileReader();
-      reader.onload = (e) => setImages(imgs => imgs.length < 4 ? [...imgs, e.target.result] : imgs);
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const MAX_SIZE = 800;
+          let { width, height } = img;
+          
+          if (width > height && width > MAX_SIZE) {
+            height *= MAX_SIZE / width;
+            width = MAX_SIZE;
+          } else if (height > MAX_SIZE) {
+            width *= MAX_SIZE / height;
+            height = MAX_SIZE;
+          }
+          
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+          
+          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.6);
+          setImages(imgs => imgs.length < 4 ? [...imgs, compressedBase64] : imgs);
+        };
+        img.src = e.target.result;
+      };
       reader.readAsDataURL(f);
     });
   };
