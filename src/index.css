@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #F8FAFC;
+    color: #0F172A;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-primary-800 hover:shadow-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-primary-700 border border-primary-200 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-primary-50 hover:border-primary-400 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-slate-600 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-slate-100 active:scale-95;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-red-700 active:scale-95;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-card transition-all duration-300 hover:shadow-card-hover;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 text-sm placeholder-slate-400 outline-none transition-all duration-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-100;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-slate-900;
+  }
+
+  .section-subtitle {
+    @apply text-slate-500 text-lg mt-3;
+  }
+
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .skeleton {
+    @apply bg-slate-200 rounded-lg animate-pulse-slow;
+  }
+}
+
+/* gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 50%, #60A5FA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* hero gradient background */
+.hero-gradient {
+  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 40%, #1D4ED8 100%);
+}
+
+/* glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* chat bubble */
+.chat-bubble-sent {
+  @apply bg-primary-600 text-white rounded-2xl rounded-tr-sm px-4 py-2.5 max-w-xs ml-auto;
+}
+.chat-bubble-received {
+  @apply bg-white text-slate-800 rounded-2xl rounded-tl-sm px-4 py-2.5 max-w-xs shadow-sm border border-slate-100;
+}
