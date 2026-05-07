@@ -32,6 +32,7 @@ COPY --from=build /app/dist /usr/share/nginx/html
 # This prevents 404 errors when refreshing routes
 RUN echo "server { \
     listen 80; \
+    client_max_body_size 50M; \
     location / { \
         root /usr/share/nginx/html; \
         index index.html index.htm; \
